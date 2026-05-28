@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin FCRTM</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-900 text-white p-8">
+<div class="max-w-4xl mx-auto">
+  <h1 class="text-3xl font-bold gold-text">Gestion des actualités</h1>
+  <div class="mt-6 bg-black p-4 rounded">
+    <input type="text" id="titre" placeholder="Titre" class="w-full p-2 mb-2 bg-gray-800 rounded">
+    <textarea id="contenu" placeholder="Contenu" rows="3" class="w-full p-2 mb-2 bg-gray-800 rounded"></textarea>
+    <input type="date" id="date" class="w-full p-2 mb-2 bg-gray-800 rounded">
+    <button id="createBtn" class="bg-green-700 px-4 py-2 rounded">Ajouter / Modifier</button>
+  </div>
+  <div id="listActus" class="mt-8 space-y-3"></div>
+</div>
+<script>
+  let editId = null;
+  async function load() {
+    const res = await fetch('/api/actualites');
+    const data = await res.json();
+    const container = document.getElementById('listActus');
+    container.innerHTML = data.map(actu => `
+      <div class="bg-gray-800 p-3 rounded flex justify-between items-center">
+        <div><strong>${actu.titre}</strong> (${actu.date})<br><small>${actu.contenu}</small></div>
+        <div><button onclick="editActu(${actu.id})" class="bg-blue-600 px-2 py-1 rounded">✏️</button> <button onclick="deleteActu(${actu.id})" class="bg-red-700 px-2 py-1 rounded">🗑️</button></div>
+      </div>
+    `).join('');
+  }
+  window.editActu = async (id) => {
+    const res = await fetch(`/api/actualites/${id}`);
+    const actu = await res.json();
+    document.getElementById('titre').value = actu.titre;
+    document.getElementById('contenu').value = actu.contenu;
+    document.getElementById('date').value = actu.date;
+    editId = actu.id;
+  };
+  window.deleteActu = async (id) => {
+    await fetch(`/api/actualites/${id}`, { method: 'DELETE' });
+    load();
+  };
+  document.getElementById('createBtn').onclick = async () => {
+    const titre = document.getElementById('titre').value;
+    const contenu = document.getElementById('contenu').value;
+    const date = document.getElementById('date').value;
+    if (editId) {
+      await fetch(`/api/actualites/${editId}`, { method: 'PUT', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ titre, contenu, date }) });
+      editId = null;
+    } else {
+      await fetch('/api/actualites', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ titre, contenu, date }) });
+    }
+    document.getElementById('titre').value = '';
+    document.getElementById('contenu').value = '';
+    document.getElementById('date').value = '';
+    load();
+  };
+  load();
+</script>
+</body>
+</html>

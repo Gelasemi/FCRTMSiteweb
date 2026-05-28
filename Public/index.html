@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FCRTM Madagascar – Royauté et Traditions</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <style>
+    body { font-family: 'Poppins', sans-serif; }
+    h1, h2, h3, .royal-font { font-family: 'Playfair Display', serif; }
+    .bg-royal { background: linear-gradient(135deg, #1e1a0c 0%, #3b2a1a 100%); }
+    .gold-text { color: #d4af37; }
+    .border-gold { border-color: #d4af37; }
+    .btn-gold { background-color: #d4af37; color: #1e1a0c; transition: all 0.3s; }
+    .btn-gold:hover { background-color: #b8960c; transform: scale(1.05); }
+  </style>
+</head>
+<body class="bg-black text-white">
+
+<nav class="fixed top-0 w-full z-50 bg-black/80 backdrop-blur-md border-b border-gold/30 py-3">
+  <div class="container mx-auto px-6 flex justify-between items-center flex-wrap">
+    <div class="flex items-center space-x-3">
+      <img src="images/FCRTM LOGO_n.jpg" alt="Logo FCRTM" class="h-12 w-auto">
+      <span class="royal-font text-xl font-bold gold-text">FCRTM</span>
+    </div>
+    <div class="space-x-6 text-sm md:text-base hidden md:flex">
+      <a href="index.html" class="hover:text-yellow-400 transition">Accueil</a>
+      <a href="histoire.html" class="hover:text-yellow-400 transition">Histoire</a>
+      <a href="apropos.html" class="hover:text-yellow-400 transition">À propos</a>
+      <a href="activites.html" class="hover:text-yellow-400 transition">Activités</a>
+      <a href="likalily.html" class="hover:text-yellow-400 transition">Lika Lily</a>
+      <a href="dons.html" class="hover:text-yellow-400 transition">Dons</a>
+      <a href="contact.html" class="hover:text-yellow-400 transition">Contact</a>
+      <a href="admin.html" class="border border-gold/50 px-3 py-1 rounded-full text-xs">Admin</a>
+    </div>
+  </div>
+</nav>
+
+<section class="relative h-screen flex items-center justify-center bg-cover bg-center" style="background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('images/fitampoho0_n.jpg');">
+  <div class="text-center px-4" data-aos="fade-up">
+    <h1 class="text-5xl md:text-7xl font-bold royal-font gold-text">FCRTM Madagascar</h1>
+    <p class="text-xl md:text-2xl mt-4 max-w-2xl mx-auto">Préserver notre culture, c’est préserver notre identité et notre avenir</p>
+    <div class="mt-8 space-x-4">
+      <a href="histoire.html" class="btn-gold px-8 py-3 rounded-full font-semibold">Découvrir notre combat</a>
+      <a href="dons.html" class="border border-gold text-gold px-8 py-3 rounded-full font-semibold hover:bg-gold hover:text-black transition">Soutenir</a>
+    </div>
+  </div>
+</section>
+
+<section class="py-20 px-6 bg-royal" data-aos="fade-right">
+  <div class="container mx-auto text-center">
+    <h2 class="text-4xl royal-font gold-text mb-6">Ny Hasina, Fomban-drazana, Fihavanana</h2>
+    <p class="text-lg max-w-3xl mx-auto">La Fédération des Communautés Royales Traditionnelles et Culturelles de Madagascar (FCRTM) rassemble les descendants royaux, les gardiens des coutumes et les tradipraticiens pour restaurer la souveraineté spirituelle et culturelle de Madagascar.</p>
+  </div>
+</section>
+
+<section class="py-16 bg-black">
+  <div class="container mx-auto grid md:grid-cols-3 gap-8 text-center">
+    <div data-aos="zoom-in"><i class="fas fa-crown text-5xl gold-text"></i><p class="text-3xl font-bold mt-2">+200</p><p>Mpanjaka et Tangalamena</p></div>
+    <div data-aos="zoom-in" data-aos-delay="100"><i class="fas fa-hand-holding-heart text-5xl gold-text"></i><p class="text-3xl font-bold mt-2">6</p><p>Provinces couvertes</p></div>
+    <div data-aos="zoom-in" data-aos-delay="200"><i class="fas fa-syringe text-5xl gold-text"></i><p class="text-3xl font-bold mt-2">15 000+</p><p>Enfants vaccinés (partenariat UNICEF)</p></div>
+  </div>
+</section>
+
+<section class="py-20 bg-gray-900">
+  <div class="container mx-auto px-6">
+    <h2 class="text-4xl royal-font gold-text text-center mb-12">Actualités de la FCRTM</h2>
+    <div id="actualites-list" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+  </div>
+</section>
+
+<footer class="bg-black border-t border-gold/30 py-10 text-center text-gray-400">
+  <p>© 2026 FCRTM Madagascar – Tous droits réservés – Hasina tsy mba resy</p>
+  <div class="flex justify-center space-x-6 mt-4">
+    <a href="https://www.facebook.com/profile.php?id=100066566653528" target="_blank" class="hover:text-gold"><i class="fab fa-facebook-f"></i></a>
+    <a href="#" class="hover:text-gold"><i class="fab fa-twitter"></i></a>
+  </div>
+</footer>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  AOS.init({ duration: 1000, once: true });
+  fetch('/api/actualites')
+    .then(res => res.json())
+    .then(data => {
+      const container = document.getElementById('actualites-list');
+      if (data.length === 0) { container.innerHTML = '<p class="text-center col-span-3">Aucune actualité pour le moment.</p>'; return; }
+      container.innerHTML = data.slice(0,6).map(actu => `
+        <div class="bg-black/50 border border-gold/20 p-5 rounded-xl backdrop-blur-sm" data-aos="fade-up">
+          <h3 class="text-xl font-bold gold-text">${actu.titre}</h3>
+          <p class="text-sm text-gray-400 mt-1">${actu.date}</p>
+          <p class="mt-3">${actu.contenu.substring(0,120)}...</p>
+        </div>
+      `).join('');
+    });
+</script>
+</body>
+</html>

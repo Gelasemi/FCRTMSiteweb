@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Faire un don - FCRTM</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Poppins&display=swap" rel="stylesheet">
+</head>
+<body class="bg-black text-white">
+<nav class="fixed top-0 w-full bg-black/80 p-3"><a href="index.html" class="text-gold">← Retour</a></nav>
+<section class="pt-32 pb-20 flex justify-center">
+  <div class="bg-royal p-8 rounded-2xl w-full max-w-md">
+    <h1 class="text-3xl font-bold gold-text text-center">Soutenez la FCRTM</h1>
+    <form id="donForm" class="mt-6 space-y-4">
+      <input type="text" id="nom" placeholder="Votre nom" class="w-full p-2 bg-black border border-gold rounded" required>
+      <input type="email" id="email" placeholder="Email" class="w-full p-2 bg-black border border-gold rounded" required>
+      <input type="number" id="montant" placeholder="Montant (MGA)" class="w-full p-2 bg-black border border-gold rounded" required>
+      <textarea id="message" placeholder="Message" rows="2" class="w-full p-2 bg-black border border-gold rounded"></textarea>
+      <button type="submit" class="btn-gold w-full py-2 rounded font-bold">Envoyer mon don</button>
+    </form>
+    <div id="response" class="mt-4 text-center"></div>
+  </div>
+</section>
+<script>
+  document.getElementById('donForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const nom = document.getElementById('nom').value;
+    const email = document.getElementById('email').value;
+    const montant = document.getElementById('montant').value;
+    const message = document.getElementById('message').value;
+    const res = await fetch('/api/dons', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ nom, email, montant, message }) });
+    const data = await res.json();
+    document.getElementById('response').innerHTML = `<div class="bg-green-800 p-2 rounded">${data.message}</div>`;
+    document.getElementById('donForm').reset();
+  });
+</script>
+</body>
+</html>

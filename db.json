@@ -1,0 +1,21 @@
+{
+  "actualites": [
+    {
+      "id": 2,
+      "titre": "Petit Briefing",
+      "contenu": "On a fait une reunion de briefing concernant la suite de notre programme à l'ANS Ampefiloha. Une demande d'audiance a été deposée auprès de la primature. Et une autre demande a été faite pour rencontre le President de la republique Mickael Randrianirina.",
+      "date": "2026-05-26"
+    }
+  ],
+  "dons": [
+    {
+      "id": 1,
+      "nom": "MANANTENASOA",
+      "email": "gelasemi@gmail.com",
+      "montant": "2000",
+      "message": "XXXXX",
+      "date": "2026-05-27T12:45:16.044Z"
+    }
+  ],
+  "nextId": 3
+}

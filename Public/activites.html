@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Activités - FCRTM Madagascar</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <style>
+    body { font-family: 'Poppins', sans-serif; }
+    .gold-text { color: #d4af37; }
+    .bg-royal { background: linear-gradient(135deg, #1e1a0c 0%, #3b2a1a 100%); }
+    .btn-gold { background-color: #d4af37; color: #1e1a0c; transition: all 0.3s; }
+    .btn-gold:hover { background-color: #b8960c; transform: scale(1.05); }
+    .gallery-item { transition: transform 0.3s, box-shadow 0.3s; cursor: pointer; }
+    .gallery-item:hover { transform: scale(1.02); box-shadow: 0 0 15px rgba(212,175,55,0.5); }
+  </style>
+</head>
+<body class="bg-black text-white">
+<nav class="fixed top-0 w-full z-50 bg-black/80 backdrop-blur-md border-b border-gold/30 py-3"><div class="container mx-auto px-6 flex justify-between items-center"><div class="flex items-center space-x-3"><img src="images/FCRTM LOGO_n.jpg" class="h-12"><span class="royal-font text-xl font-bold gold-text">FCRTM</span></div><div class="space-x-6 hidden md:flex"><a href="index.html">Accueil</a><a href="histoire.html">Histoire</a><a href="apropos.html">À propos</a><a href="activites.html">Activités</a><a href="likalily.html">Lika Lily</a><a href="dons.html">Dons</a><a href="contact.html">Contact</a><a href="admin.html" class="border border-gold/50 px-3 py-1 rounded-full text-xs">Admin</a></div></div></nav>
+
+<!-- Carte interactive -->
+<section class="pt-32 pb-20 px-6">
+  <div class="container mx-auto">
+    <h2 class="text-4xl royal-font gold-text text-center mb-6" data-aos="fade-down">Carte des pèlerinages</h2>
+    <p class="text-center mb-8">Découvrez les étapes de la restauration des <em>lika lily</em> à travers Madagascar</p>
+    <div id="map" class="h-[500px] rounded-xl border-2 border-gold/30 shadow-2xl" data-aos="fade-up"></div>
+  </div>
+</section>
+
+<!-- Galerie photo/vidéo -->
+<section class="py-20 bg-gray-900">
+  <div class="container mx-auto px-6">
+    <h2 class="text-4xl royal-font gold-text text-center mb-6" data-aos="fade-down">Galerie d’activités</h2>
+    <div class="flex justify-center space-x-4 mb-8" data-aos="fade-up">
+      <button class="filter-btn active px-4 py-2 rounded-full bg-gold text-black" data-filter="all">Toutes</button>
+      <button class="filter-btn px-4 py-2 rounded-full border border-gold" data-filter="photo">Photos</button>
+      <button class="filter-btn px-4 py-2 rounded-full border border-gold" data-filter="video">Vidéos</button>
+    </div>
+    <div id="gallery" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
+  </div>
+</section>
+
+<!-- Lien Facebook -->
+<section class="py-16 bg-royal text-center" data-aos="zoom-in">
+  <i class="fab fa-facebook-f text-5xl gold-text mb-4"></i>
+  <h3 class="text-2xl font-bold">Suivez toute l'actualité de la FCRTM</h3>
+  <a href="https://www.facebook.com/profile.php?id=100066566653528" target="_blank" class="btn-gold inline-block mt-4 px-6 py-3 rounded-full">Rejoindre notre communauté Facebook</a>
+</section>
+
+<footer class="bg-black border-t border-gold/30 py-10 text-center text-gray-400">© 2026 FCRTM Madagascar</footer>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  AOS.init({ duration: 1000, once: true });
+
+  // Carte interactive
+  var map = L.map('map').setView([-18.8792, 47.5079], 6);
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', { attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a>' }).addTo(map);
+  var pellerinages = [
+    { nom: "Antsiranana", coords: [-12.2786, 49.2915], date: "Mai 2026" },
+    { nom: "Mahajanga", coords: [-15.7167, 46.3167], date: "Juillet 2026" },
+    { nom: "Toamasina", coords: [-18.1492, 49.4023], date: "Septembre 2026" },
+    { nom: "Fianarantsoa", coords: [-21.4545, 47.0875], date: "Novembre 2026" },
+    { nom: "Toliara", coords: [-23.35, 43.6667], date: "Février 2027" },
+    { nom: "Antananarivo", coords: [-18.8792, 47.5079], date: "Avril 2027" }
+  ];
+  pellerinages.forEach(p => {
+    L.marker(p.coords).addTo(map).bindPopup(`<b>${p.nom}</b><br>Pèlerinage : ${p.date}`);
+  });
+
+  // Galerie (photos et vidéos)
+  const mediaItems = [
+    { type: "photo", url: "images/fitampoho0_n.jpg", title: "Symposium Toliara 2022" },
+    { type: "photo", url: "images/475361984_959737956255084_1818571900950395560_n.jpg", title: "Émission radio" },
+    { type: "photo", url: "images/476013321_965147215714158_1409243725930868971_n.jpg", title: "Vaccination UNICEF" },
+    { type: "photo", url: "images/476094392_964845732410973_6319934710473847656_n.jpg", title: "Campagne vaccination enfants" },
+    { type: "video", url: "https://www.youtube.com/embed/dQw4w9WgXcQ", title: "Discours Princesse Zoendreniny (exemple)" },
+    { type: "photo", url: "images/lutte contr les travail des enfants_n.jpg", title: "Lutte contre travail des enfants" }
+  ];
+  function renderGallery(filter) {
+    const filtered = mediaItems.filter(item => filter === 'all' || item.type === filter);
+    const container = document.getElementById('gallery');
+    container.innerHTML = filtered.map(item => {
+      if (item.type === 'photo') {
+        return `<div class="gallery-item bg-black border border-gold/30 rounded-xl overflow-hidden" data-aos="fade-up">
+                  <img src="${item.url}" class="w-full h-64 object-cover" alt="${item.title}">
+                  <div class="p-4"><h3 class="font-bold gold-text">${item.title}</h3></div>
+                </div>`;
+      } else {
+        return `<div class="gallery-item bg-black border border-gold/30 rounded-xl overflow-hidden" data-aos="fade-up">
+                  <iframe class="w-full h-64" src="${item.url}" frameborder="0" allowfullscreen></iframe>
+                  <div class="p-4"><h3 class="font-bold gold-text">${item.title}</h3></div>
+                </div>`;
+      }
+    }).join('');
+  }
+  renderGallery('all');
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('bg-gold', 'text-black', 'border-none'));
+      btn.classList.add('bg-gold', 'text-black');
+      renderGallery(btn.dataset.filter);
+    });
+  });
+</script>
+</body>
+</html>
