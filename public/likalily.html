@@ -4,45 +4,101 @@
   <meta charset="UTF-8">
   <title>Lika Lily - FCRTM</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Poppins&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <style>body { font-family: 'Poppins', sans-serif; } .gold-text { color: #d4af37; } .bg-royal { background: linear-gradient(135deg, #1e1a0c, #3b2a1a); }</style>
+  <style>
+    body { font-family: 'Poppins', sans-serif; background: #e11d1d; color: white; }
+    .gold-text { color: #f5b042; } /* or doux pour contraster */
+    .btn-gold { background: #f5b042; color: #e11d1d; padding: 0.75rem 1.5rem; border-radius: 9999px; font-weight: bold; transition: 0.3s; display: inline-block; }
+    .btn-gold:hover { background: #ffc857; transform: scale(1.02); }
+    .nav-link { transition: 0.2s; }
+    .nav-link:hover { color: #f5b042; }
+  </style>
 </head>
-<body class="bg-red text-white">
-<nav class="fixed top-0 w-full z-50 bg-black/80 backdrop-blur-md border-b border-gold/30 py-3"><div class="container mx-auto px-6 flex justify-between"><div><img src="images/FCRTM LOGO_n.jpg" class="h-12 inline"><span class="royal-font text-xl font-bold gold-text ml-2">FCRTM</span></div><div class="space-x-4 hidden md:block"><a href="index.html">Accueil</a><a href="histoire.html">Histoire</a><a href="apropos.html">À propos</a><a href="activites.html">Activités</a><a href="likalily.html">Lika Lily</a><a href="dons.html">Dons</a><a href="contact.html">Contact</a></div></div></nav>
-<section class="pt-32 pb-20 px-6">
-  <div class="container mx-auto max-w-5xl">
-    <h1 class="text-5xl royal-font gold-text text-center mb-6">Les 44 Lika Lily</h1>
-    <p class="text-center mb-10">Interdits ancestraux violés dont la réparation est indispensable pour restaurer le <em>Hasina</em> de Madagascar.</p>
-    <div class="grid md:grid-cols-2 gap-4 text-sm">
-      <ul class="list-disc list-inside space-y-2">
-        <li>1. Ouvrir les tombes, voler les ossements humains</li>
-        <li>2. Vente de personnes pour sacrifice</li>
-        <li>3. Homosexualité et mariage homosexuel</li>
-        <li>4. Inceste (père, mère, enfant)</li>
-        <li>5. Sacrifices humains ou d’aigrette</li>
-        <li>6. Meurtre de parents proches</li>
-        <li>7. Boire du sang, moqueries rituelles</li>
-        <li>8. Épouser un chien, manger du chien sans rite</li>
-        <li>9. Fornication, sorcellerie</li>
-        <li>10. Détruire les rois ou notables</li>
-      </ul>
-      <ul class="list-disc list-inside space-y-2">
-        <li>11. Manquer de respect aux parents</li>
-        <li>12. Manger de l’argent sale (corruption)</li>
-        <li>13. Brûler les forêts sacrées</li>
-        <li>14. Traverser les rivières sans rites</li>
-        <li>15. Inverser la vérité</li>
-        <li>16. Mauvaise tenue devant les aînés</li>
-        <li>17. Ancêtre non inhumé</li>
-        <li>18. Vente de terres héritées</li>
-        <li>19. Rakemba tuant des bœufs sans autorité</li>
-        <li>20. Destruction de lieux sacrés (hazomanga, pierres)</li>
-      </ul>
+<body class="bg-red-600">
+  <!-- Navigation : fond rouge, plus de noir -->
+  <nav class="fixed top-0 w-full z-50 bg-[#c41a1a] shadow-lg border-b border-white/30 py-3">
+    <div class="container mx-auto px-6 flex justify-between items-center">
+      <div class="flex items-center space-x-2">
+        <img src="images/FCRTM LOGO_n.jpg" class="h-12 w-auto" alt="Logo FCRTM" onerror="this.src='https://via.placeholder.com/48?text=FCRTM'">
+        <span class="font-serif text-xl font-bold text-white">FCRTM</span>
+      </div>
+      <div class="space-x-6 hidden md:flex text-white font-medium">
+        <a href="index.html" class="nav-link">Accueil</a>
+        <a href="histoire.html" class="nav-link">Histoire</a>
+        <a href="apropos.html" class="nav-link">À propos</a>
+        <a href="activites.html" class="nav-link">Activités</a>
+        <a href="likalily.html" class="nav-link">Lika Lily</a>
+        <a href="dons.html" class="nav-link">Dons</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+      </div>
     </div>
-    <div class="text-center mt-10"><a href="dons.html" class="btn-gold px-6 py-3 rounded-full">Soutenir les rites de réparation</a></div>
-  </div>
-</section>
-<footer class="bg-black border-t border-gold/30 py-6 text-center">© 2026 FCRTM</footer>
+  </nav>
+
+  <!-- Contenu principal -->
+  <section class="pt-32 pb-20 px-6">
+    <div class="container mx-auto max-w-5xl">
+      <h1 class="text-5xl font-serif gold-text text-center mb-6">Les 44 Lika Lily</h1>
+      <p class="text-center mb-10 text-white/90">Interdits ancestraux violés dont la réparation est indispensable pour restaurer le <em>Hasina</em> de Madagascar.</p>
+      <div class="grid md:grid-cols-2 gap-8 text-sm md:text-base bg-black/20 p-6 rounded-2xl backdrop-blur-sm">
+        <ul class="list-disc list-inside space-y-2 text-white">
+          <li>1. Ouvrir les tombes, voler les ossements humains</li>
+          <li>2. Vente de personnes pour sacrifice</li>
+          <li>3. Homosexualité et mariage homosexuel</li>
+          <li>4. Inceste (père, mère, enfant)</li>
+          <li>5. Sacrifices humains ou d’aigrette</li>
+          <li>6. Meurtre de parents proches</li>
+          <li>7. Boire du sang, moqueries rituelles</li>
+          <li>8. Épouser un chien, manger du chien sans rite</li>
+          <li>9. Fornication, sorcellerie</li>
+          <li>10. Détruire les rois ou notables</li>
+          <li>11. Manquer de respect aux parents</li>
+          <li>12. Manger de l’argent sale (corruption)</li>
+          <li>13. Brûler les forêts sacrées</li>
+          <li>14. Traverser les rivières sans rites</li>
+          <li>15. Inverser la vérité</li>
+          <li>16. Mauvaise tenue devant les aînés</li>
+          <li>17. Ancêtre non inhumé</li>
+          <li>18. Vente de terres héritées</li>
+          <li>19. Rakemba tuant des bœufs sans autorité</li>
+          <li>20. Destruction de lieux sacrés (hazomanga, pierres)</li>
+        </ul>
+        <ul class="list-disc list-inside space-y-2 text-white">
+          <li>21. Vente de sokake (viande sacrée)</li>
+          <li>22. Zoophilie</li>
+          <li>23. Malédictions, impolitesse grave</li>
+          <li>24. Abus d'enfants, drogues</li>
+          <li>25. Port en palanquin sans légitimité</li>
+          <li>26. Usurpation de l'or rituel</li>
+          <li>27. Prière sans respect du terroir</li>
+          <li>28. Mariage dans un tombeau</li>
+          <li>29. Manque de respect aux aînés</li>
+          <li>30. Violence avec armes blanches</li>
+          <li>31. Rituels de mariage contraires aux usages</li>
+          <li>32. Ombiasa incestueux</li>
+          <li>33. Baptême d'enfant sans rite ancestral</li>
+          <li>34. Destruction d'objets sacrés</li>
+          <li>35. Déplacement de tombes sans rite</li>
+          <li>36. Vol d'or via hazomanga</li>
+          <li>37. Non-respect des amendes traditionnelles (32/8 bœufs)</li>
+          <li>38. Faux devins trompeurs</li>
+          <li>39. Impolitesse envers les notables</li>
+          <li>40. Sacrifices les jours fady</li>
+          <li>41. Non-suivi des lois ancestrales</li>
+          <li>42. Sacrifice de plus de 10 bêtes</li>
+          <li>43. Rakemba violent sans respect des règles</li>
+          <li>44. Hazomanga profané par une église</li>
+        </ul>
+      </div>
+      <div class="text-center mt-10">
+        <a href="dons.html" class="btn-gold">Soutenir les rites de réparation</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer rouge (plus de noir) -->
+  <footer class="bg-[#c41a1a] border-t border-white/20 py-6 text-center text-white/80">
+    <p>© 2026 FCRTM Madagascar – Hasina tsy mba resy</p>
+  </footer>
 </body>
 </html>
