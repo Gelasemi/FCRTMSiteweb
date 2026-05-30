@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
   <title>FCRTM Madagascar – Royauté et Traditions</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
@@ -16,6 +16,48 @@
     .border-gold { border-color: #d4af37; }
     .btn-gold { background-color: #d4af37; color: #1e1a0c; transition: all 0.3s; }
     .btn-gold:hover { background-color: #b8960c; transform: scale(1.05); }
+    /* Hero slider styles */
+    .hero-slider {
+      position: relative;
+      height: 100vh;
+      overflow: hidden;
+    }
+    .slide-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+      opacity: 0;
+      transition: opacity 1.5s ease-in-out;
+      z-index: 0;
+    }
+    .slide-bg.active {
+      opacity: 1;
+      z-index: 1;
+    }
+    .hero-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.65);
+      z-index: 2;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 3;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 0 1rem;
+    }
   </style>
 </head>
 <body class="bg-black text-white">
@@ -23,7 +65,7 @@
 <nav class="fixed top-0 w-full z-50 bg-black/80 backdrop-blur-md border-b border-gold/30 py-3">
   <div class="container mx-auto px-6 flex justify-between items-center flex-wrap">
     <div class="flex items-center space-x-3">
-      <img src="images/FCRTM LOGO_n.jpg" alt="Logo FCRTM" class="h-12 w-auto">
+      <img src="images/FCRTM LOGO_n.jpg" alt="Logo FCRTM" class="h-12 w-auto" onerror="this.src='https://via.placeholder.com/48?text=FCRTM'">
       <span class="royal-font text-xl font-bold gold-text">FCRTM</span>
     </div>
     <div class="space-x-6 text-sm md:text-base hidden md:flex">
@@ -39,16 +81,26 @@
   </div>
 </nav>
 
-<section class="relative h-screen flex items-center justify-center bg-cover bg-center" style="background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('af2755d9-e730-421f-9d3e-91a3bb84adaa.jfif');">
-  <div class="text-center px-4" data-aos="fade-up">
-    <h1 class="text-5xl md:text-7xl font-bold royal-font gold-text">FCRTM Madagascar</h1>
-    <p class="text-xl md:text-2xl mt-4 max-w-2xl mx-auto">Préserver notre culture, c’est préserver notre identité et notre avenir</p>
-    <div class="mt-8 space-x-4">
-      <a href="histoire.html" class="btn-gold px-8 py-3 rounded-full font-semibold">Découvrir notre combat</a>
-      <a href="dons.html" class="border border-gold text-gold px-8 py-3 rounded-full font-semibold hover:bg-gold hover:text-black transition">Soutenir</a>
+<!-- Hero Slider -->
+<div class="hero-slider">
+  <!-- Images du diaporama (mettre vos fichiers dans le dossier images/) -->
+  <div class="slide-bg active" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('images/af2755d9-e730-421f-9d3e-91a3bb84adaa.jfif');"></div>
+  <div class="slide-bg" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('images/fitampoho0_n.jpg');"></div>
+  <div class="slide-bg" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('images/475361984_959737956255084_1818571900950395560_n.jpg');"></div>
+  <div class="slide-bg" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('images/476013321_965147215714158_1409243725930868971_n.jpg');"></div>
+  <div class="slide-bg" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('images/Capture d’écran 2026-05-30 173238.png');"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div data-aos="fade-up">
+      <h1 class="text-5xl md:text-7xl font-bold royal-font gold-text">FCRTM Madagascar</h1>
+      <p class="text-xl md:text-2xl mt-4 max-w-2xl mx-auto">Préserver notre culture, c’est préserver notre identité et notre avenir</p>
+      <div class="mt-8 space-x-4">
+        <a href="histoire.html" class="btn-gold px-8 py-3 rounded-full font-semibold inline-block">Découvrir notre combat</a>
+        <a href="dons.html" class="border border-gold text-gold px-8 py-3 rounded-full font-semibold hover:bg-gold hover:text-black transition inline-block">Soutenir</a>
+      </div>
     </div>
   </div>
-</section>
+</div>
 
 <section class="py-20 px-6 bg-royal" data-aos="fade-right">
   <div class="container mx-auto text-center">
@@ -83,10 +135,26 @@
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
   AOS.init({ duration: 1000, once: true });
+
+  // --- Slider automatique des images de fond ---
+  const slides = document.querySelectorAll('.slide-bg');
+  let currentIndex = 0;
+  const totalSlides = slides.length;
+
+  function changeSlide() {
+    slides[currentIndex].classList.remove('active');
+    currentIndex = (currentIndex + 1) % totalSlides;
+    slides[currentIndex].classList.add('active');
+  }
+  // Change toutes les 5 secondes
+  setInterval(changeSlide, 5000);
+
+  // --- Chargement des actualités depuis l'API (si backend existant) ---
   fetch('/api/actualites')
     .then(res => res.json())
     .then(data => {
       const container = document.getElementById('actualites-list');
+      if (!container) return;
       if (data.length === 0) { container.innerHTML = '<p class="text-center col-span-3">Aucune actualité pour le moment.</p>'; return; }
       container.innerHTML = data.slice(0,6).map(actu => `
         <div class="bg-black/50 border border-gold/20 p-5 rounded-xl backdrop-blur-sm" data-aos="fade-up">
@@ -95,7 +163,8 @@
           <p class="mt-3">${actu.contenu.substring(0,120)}...</p>
         </div>
       `).join('');
-    });
+    })
+    .catch(err => console.log("API non disponible, affichage statique possible", err));
 </script>
 </body>
 </html>
